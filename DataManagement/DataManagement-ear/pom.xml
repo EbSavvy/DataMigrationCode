@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.rubrik</groupId>
+    <artifactId>DataManagement</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>com.rubrik</groupId>
+  <artifactId>DataManagement-ear</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>DataManagement-ear</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+    <!-- package war in the ear file -->
+    <dependency>
+      <groupId>com.rubrik</groupId>
+      <artifactId>DataManagement-web-war</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-ear-plugin</artifactId>
+          <version>3.0.1</version>
+          <configuration>
+            <finalName>DataManagement-${project.version}</finalName>
+            <modules>
+              <webModule>
+                <groupId>com.rubrik</groupId>
+                <artifactId>DataManagement-web-war</artifactId>
+                <uri>DataManagement-web-war-1.0.SNAPSHOP.war</uri>
+                <contextRoot>/application</contextRoot>
+              </webModule>
+            </modules>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>
